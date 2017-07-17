@@ -8,7 +8,7 @@ episodes=`grep href <<< "$episodes"`
 for i in ${episodes}; do
 	episode=${i#href=\"}
 	episode=${episode%\"*}
-	if [ ${episode} == '<a' ]; then continue; fi 
+	if [[ $episode != *\/episode\/* ]]; then continue; fi
 	./download.sh ${episode}
 done
 exit 0
